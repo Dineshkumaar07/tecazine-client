@@ -26,7 +26,7 @@ const Viewer = () => {
   };
 
   return (
-    <div className="h-full w-screen flex flex-col p-5 ">
+    <div className="h-full w-screen flex flex-col p-5 font-poppins">
       <div className="">
         <h1 className="font-bold text-3xl  ">Tecazine Responses</h1>
         <ul className="mt-9 ">
@@ -35,7 +35,7 @@ const Viewer = () => {
               key={document}
               className="hover:bg-gray-300 p-3 m-2 rounded-md flex items-center"
             >
-              <div className="px-9 w-1/2">{document} </div>
+              <div className="px-9 sm:w-1/2    ">{document} </div>
               <button
                 onClick={() => downloadDocument(document)}
                 className="bg-purple-600 px-3 py-2 text-white rounded-lg hover:bg-"

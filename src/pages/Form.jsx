@@ -60,8 +60,8 @@ const Form = () => {
     }
   };
   return (
-    <div className="h-screen w-screen flex justify-center items-center p-9 font-poppins ">
-      <div className="p-8 border-2 border-purple-700 rounded-lg">
+    <div className="h-screen w-screen flex sm:justify-center sm:items-center sm:p-9 font-poppins  pt-40 ">
+      <div className="p-3 sm:p-8 sm:border-2  border-purple-700 rounded-lg">
         <h1 className="font-bold text-3xl">Tecazine</h1>
         <p className="my-3">Submit your response : </p>
         <form className="flex flex-col gap-2">
@@ -87,7 +87,7 @@ const Form = () => {
             type="file"
             id="file"
             name="file"
-            accept=".pdf, .doc, .docx"
+            accept=".pdf"
             onChange={handleFileChange}
           />
           <br />
