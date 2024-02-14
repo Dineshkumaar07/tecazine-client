@@ -66,45 +66,48 @@ const Form = () => {
   };
   return (
     <div className="h-screen w-screen flex sm:justify-center sm:items-center sm:p-9 font-poppins  pt-40 ">
-      <div className="p-3 sm:p-8 sm:border-2  border-purple-700 rounded-lg">
-        <h1 className="font-bold text-3xl">Tecazine</h1>
-        <p className="my-3">Submit your response : </p>
-        <form className="flex flex-col gap-2">
-          <label>Name </label>
-          <input
-            value={name}
-            onChange={handleNameChange}
-            type="text"
-            placeholder="Name"
-            className="focus:outline-purple-700 px-3 py-2 border-2"
-          />
-          <label>Register Number</label>
-          <input
-            value={registerNumber}
-            onChange={handleRegisterNumberChange}
-            type="text"
-            placeholder="Register number"
-            className="focus:outline-purple-700 px-3 py-2 border-2 "
-          />
+      {accept && (
+        <div className="p-3 sm:p-8 sm:border-2  border-purple-700 rounded-lg">
+          <h1 className="font-bold text-3xl">Tecazine</h1>
+          <p className="my-3">Submit your response : </p>
+          <form className="flex flex-col gap-2">
+            <label>Name </label>
+            <input
+              value={name}
+              onChange={handleNameChange}
+              type="text"
+              placeholder="Name"
+              className="focus:outline-purple-700 px-3 py-2 border-2"
+            />
+            <label>Register Number</label>
+            <input
+              value={registerNumber}
+              onChange={handleRegisterNumberChange}
+              type="text"
+              placeholder="Register number"
+              className="focus:outline-purple-700 px-3 py-2 border-2 "
+            />
 
-          <label>Choose a file:</label>
-          <input
-            type="file"
-            id="file"
-            name="file"
-            accept=".pdf"
-            onChange={handleFileChange}
-          />
-          <br />
-          <button
-            onClick={handleUpload}
-            className="bg-purple-700 px-3 py-2 rounded-lg text-white font-semibold "
-          >
-            Upload File
-          </button>
-          {loading && <p>Submitting...</p>}
-        </form>
-      </div>
+            <label>Choose a file:</label>
+            <input
+              type="file"
+              id="file"
+              name="file"
+              accept=".pdf"
+              onChange={handleFileChange}
+            />
+            <br />
+            <button
+              onClick={handleUpload}
+              className="bg-purple-700 px-3 py-2 rounded-lg text-white font-semibold "
+            >
+              Upload File
+            </button>
+            {loading && <p>Submitting...</p>}
+          </form>
+        </div>
+      )}
+      {!accept && <div>Sorry Responses are closed</div>}
     </div>
   );
 };
