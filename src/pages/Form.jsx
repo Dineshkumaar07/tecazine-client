@@ -7,7 +7,8 @@ const Form = () => {
   const [name, setName] = useState("");
   const [registerNumber, setRegisterNumber] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-
+  //change to tru to accpet response
+  const [accept, _] = useState(false);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -21,42 +22,46 @@ const Form = () => {
   };
 
   const handleUpload = async (e) => {
-    setLoading(true);
-    e.preventDefault();
+    if (accept) {
+      setLoading(true);
+      e.preventDefault();
 
-    if (!name || !registerNumber || !selectedFile) {
-      alert("Please fill in all fields and select a file.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("registerNumber", registerNumber);
-    formData.append("file", selectedFile);
-
-    try {
-      const response = await axios.post(
-        "https://tecazine-server.onrender.com/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        alert("File uploaded successfully.");
-        setLoading(false);
-        setName("");
-        setRegisterNumber("");
-        setSelectedFile(null);
-      } else {
-        alert("Error uploading file.");
+      if (!name || !registerNumber || !selectedFile) {
+        alert("Please fill in all fields and select a file.");
+        return;
       }
-    } catch (error) {
-      console.error("Error uploading file:", error.message);
-      alert("An error occurred while uploading the file.");
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("registerNumber", registerNumber);
+      formData.append("file", selectedFile);
+
+      try {
+        const response = await axios.post(
+          "https://tecazine-server.onrender.com/upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          alert("File uploaded successfully.");
+          setLoading(false);
+          setName("");
+          setRegisterNumber("");
+          setSelectedFile(null);
+        } else {
+          alert("Error uploading file.");
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error.message);
+        alert("An error occurred while uploading the file.");
+      }
+    } else {
+      alert("Sorry, response is closed!");
     }
   };
   return (
