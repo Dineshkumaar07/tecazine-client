@@ -8,7 +8,7 @@ const Form = () => {
   const [registerNumber, setRegisterNumber] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   //change to tru to accpet response
-  const accept = false;
+  const accept = true;
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
